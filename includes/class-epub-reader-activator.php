@@ -35,7 +35,7 @@ class Epub_Reader_Activator {
 			'post_title'   => __( 'ebook Demo', 'ebook-demo' ),
 			'post_content' => '[epub-reader path="wp-content/plugins/epub-reader/public/epubjs/ebook"]',
 			'post_status'  => 'publish',
-			'post_type'    => 'epub-reader-page'
+			'post_type'    => EPUB_READER_POSTTYPE
 		);
 		// Insert the page and get its id.
 		$_page_id = wp_insert_post( $page_args );

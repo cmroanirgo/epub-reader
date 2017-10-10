@@ -24,6 +24,13 @@
  * @author     Craig <x@x.com>
  */
 class Epub_Reader_PostType {
+	
+	public function init($loader) { //$loader is EPub_Reader_Loader
+		$loader->add_action( 'init', $this, 'register' );
+		$loader->add_filter( 'default_content', $this, 'set_default_content', 10, 2 );
+		$loader->add_filter( 'single_template', $this, 'filter_page_template');
+		$loader->add_filter( 'page_template', $this, 'filter_page_template' );
+	}
 
 	public function register() {
 

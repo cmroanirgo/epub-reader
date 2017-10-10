@@ -54,6 +54,13 @@ class Epub_Reader_Admin {
 
 	}
 
+	public function init( $loader) {
+		$loader->add_action( 'admin_menu', $this, 'register_settings_page' );// CM
+		$loader->add_action( 'admin_init', $this, 'register_settings' ); // CM
+		$loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
+		$loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
+	}
+	
 	/**
 	 * Register the stylesheets for the admin area.
 	 *

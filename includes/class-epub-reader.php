@@ -164,10 +164,7 @@ class Epub_Reader {
 	 */
 	private function define_post_types() {
 		$plugin_posttype = new Epub_Reader_PostType();
-		$this->loader->add_action( 'init', $plugin_posttype, 'register' );
-		$this->loader->add_filter( 'default_content', $plugin_posttype, 'set_default_content', 10, 2 );
-		$this->loader->add_filter( 'single_template', $plugin_posttype, 'filter_page_template');
-		$this->loader->add_filter( 'page_template', $plugin_posttype, 'filter_page_template' );
+		$plugin_posttype->init($this->loader);
 	}
 
 
@@ -182,10 +179,7 @@ class Epub_Reader {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Epub_Reader_Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'register_settings_page' );// CM
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' ); // CM
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$plugin_admin->init($this->loader);
 
 	}
 
@@ -199,11 +193,7 @@ class Epub_Reader {
 	private function define_public_hooks() {
 
 		$plugin_public = new Epub_Reader_Public( $this->get_plugin_name(), $this->get_version() );
-
-		// Add our Shortcodes
-		$this->loader->add_shortcode( EPUB_READER_SHORTCODE, $plugin_public, 'epub_reader_shortcode' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$plugin_public->init($this->loader);
 	}
 
 	/**

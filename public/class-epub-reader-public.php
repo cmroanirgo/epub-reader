@@ -54,25 +54,19 @@ class Epub_Reader_Public {
 
 	}
 
+	public function init( $loader ) {
+		// Add our Shortcode
+		$loader->add_shortcode( EPUB_READER_SHORTCODE, $this, 'epub_reader_shortcode' );
+		$loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_styles' );
+		$loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_scripts' );
+	}
+
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Epub_Reader_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Epub_Reader_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_register_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/epub-reader-public.css', array(), $this->version, 'all' );
 
 	}
@@ -83,19 +77,6 @@ class Epub_Reader_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Epub_Reader_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Epub_Reader_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		$epubjs_url = plugin_dir_url( __FILE__ ) . 'epubjs/';
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/epub-reader-public.js', array( 'jquery' ), $this->version, false );
 		wp_register_script( $this->plugin_name . '-fs'     , $epubjs_url . 'js/libs/screenfull.min.js', array(  ), $this->version, false);
