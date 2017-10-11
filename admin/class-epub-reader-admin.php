@@ -18,7 +18,7 @@
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/admin
- * @author     Craig <x@x.com>
+ * @author     cmroanirgo <cmroanirgo@users.noreply.github.com>
  */
 class Epub_Reader_Admin {
 

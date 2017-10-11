@@ -63,7 +63,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <script src="<?php echo $epubjs_url; ?>js/libs/jquery.min.js"></script>
 
         <?php if ($book_zip) { ?>
-        <script src="<?php echo $epubjs_url; ?>js/libs/zip.min.js"></script>-->
+        <script src="<?php echo $epubjs_url; ?>js/libs/zip.min.js"></script>
         <?php } ?>
 
         <script>
@@ -140,17 +140,17 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/jquery.touchswipe.min.js"></script>
 
         <!-- Render -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/epub.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/epub.min.js"></script>
 
         <!-- Hooks -->
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks.min.js"></script>
 
         <!-- Reader -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.min.js"></script>
 
-        <!-- Plugins -->
-        <!-- <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/plugins/search.js"></script> -->
-        <!-- <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/protection.js"></script>-->
+        <!-- Protection -->
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/protection.js"></script>
 
         <!-- Highlights -->
         <!--

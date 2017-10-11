@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    Epub_Reader
  * @subpackage Epub_Reader/includes
- * @author     Craig <x@x.com>
+ * @author     cmroanirgo <cmroanirgo@users.noreply.github.com>
  */
 class Epub_Reader_Deactivator {
 

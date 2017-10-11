@@ -45,7 +45,7 @@ add_action('wp_print_styles', 'pm_remove_all_styles', 100);
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/public
- * @author     Craig <x@x.com>
+ * @author     cmroanirgo <cmroanirgo@users.noreply.github.com>
  */
 class Epub_Reader_Public {
 
