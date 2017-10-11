@@ -1,4 +1,5 @@
 $(function() {
+	return;
 	var active = !((window.location.href.search('http://localhost:8181')>=0 || window.location.href.search('file://')>=0))
 	var copy_msg = "Do not copy this site's content!";
 

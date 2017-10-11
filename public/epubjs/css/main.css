@@ -249,6 +249,16 @@ useful for double sidebars:
   overflow: hidden;
 }
 
+#viewer-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+
 #viewer iframe {
   border: none;
 }
@@ -704,22 +714,6 @@ input:-ms-placeholder {
   margin-left: -40%;
   margin-top: -160px;
 
-}
-
-.overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  opacity: 0;
-  background: rgba(255,255,255,0.8);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .md-show {
