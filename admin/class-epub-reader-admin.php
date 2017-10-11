@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://kodespace.com
- * @since      1.0.0
+ * @since      0.9.0
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/admin
@@ -25,7 +25,7 @@ class Epub_Reader_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Epub_Reader_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,7 +43,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -64,7 +64,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function enqueue_styles() {
 
@@ -90,7 +90,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function enqueue_scripts() {
 
@@ -115,7 +115,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Register the settings page for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function register_settings_page() {
 		// Create our settings page as a submenu page.
@@ -132,7 +132,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Display the settings page content for the page we have created.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function display_settings_page() {
 
@@ -144,7 +144,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Register the settings for our settings page.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function register_settings() {
 
@@ -258,7 +258,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Sandbox our settings.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function sandbox_register_setting( $input ) {
 
@@ -282,7 +282,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Sandbox our section for the settings.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function sandbox_add_settings_section() {
 
@@ -293,7 +293,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Sandbox our single checkboxes.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function sandbox_add_settings_field_single_checkbox( $args ) {
 
@@ -323,7 +323,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Sandbox our multiple checkboxes
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function sandbox_add_settings_field_multiple_checkbox( $args ) {
 
@@ -407,7 +407,7 @@ class Epub_Reader_Admin {
 	/**
 	 * Sandbox our inputs with text
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function sandbox_add_settings_field_input_text( $args ) {
 

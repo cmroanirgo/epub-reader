@@ -5,7 +5,7 @@
  *
  *
  * @link       https://kodespace.com
- * @since      1.0.0
+ * @since      0.9.0
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/public/partials

@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://kodespace.com
- * @since      1.0.0
+ * @since      0.9.0
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/admin/partials

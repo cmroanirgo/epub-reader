@@ -3,7 +3,7 @@
  * Register all actions and filters for the plugin
  *
  * @link       https://kodespace.com
- * @since      1.0.0
+ * @since      0.9.0
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/includes
@@ -18,7 +18,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      0.9.0
  * @package    Epub_Reader
  * @subpackage Epub_Reader/includes
  * @author     cmroanirgo <cmroanirgo@users.noreply.github.com>
@@ -171,7 +171,7 @@ class Epub_Reader_PostType {
 	/**
 	 * Watch for our post_type & choose our page template (or use a global custom one if defined).
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public function filter_page_template( $page_template )
 	{

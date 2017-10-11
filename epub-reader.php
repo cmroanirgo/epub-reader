@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://kodespace.com
- * @since             1.0.0
+ * @since             0.9.0
  * @package           Epub_Reader
  *
  * @wordpress-plugin
  * Plugin Name:       EPub Reader
  * Plugin URI:        https://kodespace.com/epub-reader
  * Description:       An epub reader, based on futurepress' epub.js.
- * Version:           1.0.0
+ * Version:           0.9.0
  * Author:            Craig
  * Author URI:        https://kodespace.com
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'PLUGIN_NAME_VERSION', '0.9.0' );
 
 /**
  * The code that runs during plugin activation.
@@ -66,7 +66,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-epub-reader.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.9.0
  */
 function run_epub_reader() {
 

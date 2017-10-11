@@ -4,7 +4,7 @@
  * Fired during plugin activation
  *
  * @link       https://kodespace.com
- * @since      1.0.0
+ * @since      0.9.0
  *
  * @package    Epub_Reader
  * @subpackage Epub_Reader/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.0
+ * @since      0.9.0
  * @package    Epub_Reader
  * @subpackage Epub_Reader/includes
  * @author     cmroanirgo <cmroanirgo@users.noreply.github.com>
@@ -27,7 +27,7 @@ class Epub_Reader_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.9.0
 	 */
 	public static function activate() {
 		// Page Arguments
