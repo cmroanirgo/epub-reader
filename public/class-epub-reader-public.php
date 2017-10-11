@@ -10,6 +10,33 @@
  * @subpackage Epub_Reader/public
  */
 
+
+/** keep
+
+
+
+from: https://wordpress.stackexchange.com/a/17138
+
+	The "registered" attribute lists registered scripts and 
+	the "queue" attribute lists queue scripts on both of the above objects.
+
+function pm_remove_all_scripts() {
+    global $wp_scripts;
+    $wp_scripts->queue = array();
+}
+add_action('wp_print_scripts', 'pm_remove_all_scripts', 100);
+function pm_remove_all_styles() {
+    global $wp_styles;
+    $wp_styles->queue = array();
+}
+add_action('wp_print_styles', 'pm_remove_all_styles', 100);
+
+
+
+
+
+*/
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -77,6 +104,7 @@ class Epub_Reader_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+/*
 		$epubjs_url = plugin_dir_url( __FILE__ ) . 'epubjs/';
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/epub-reader-public.js', array( 'jquery' ), $this->version, false );
 		wp_register_script( $this->plugin_name . '-fs'     , $epubjs_url . 'js/libs/screenfull.min.js', array(  ), $this->version, false);
@@ -84,7 +112,7 @@ class Epub_Reader_Public {
 		wp_register_script( $this->plugin_name . '-hooks'  , $epubjs_url . 'js/hooks.min.js', array(  ), $this->version, false);
 		wp_register_script( $this->plugin_name . '-reader' , $epubjs_url . 'js/reader.min.js', array(  ), $this->version, false);
 		wp_register_script( $this->plugin_name . '-zip' , $epubjs_url . 'js/libs/zip.min.js', array(  ), $this->version, false);
-
+*/
 	}
 
 
@@ -94,12 +122,15 @@ class Epub_Reader_Public {
 	 * @since    1.0.0
 	 */
 	public function epub_reader_shortcode($user_defined_attributes, $content, $shortcode_name) {
-		$epubjs_url = plugin_dir_url( __FILE__ ) . 'epubjs/';
+		wp_enqueue_style( $this->plugin_name);
+
 
 		$attributes = shortcode_atts(
 				array(
-					'path' => 'epub/',
+					'src' => '/epub/', // a uri path
 					'version' => '1',
+					'width' => '',
+					'height' => '',
 					'class'  => '',
 					'style' => '',
 					'zip' => '',
@@ -109,19 +140,16 @@ class Epub_Reader_Public {
 			);
 
 		// do the processing
-		if (empty( $attributes['path'] ))
-			die ('path parameter to shortcode epub-reader must NOT be empty!');
+		if (empty( $attributes['src'] ))
+			die ('src parameter to shortcode epub-reader must NOT be empty!');
 		
-		$attributes['path'] = '/'.ltrim($attributes['path'], '/'); // ensure absolute path
-		if ( strstr($attributes['path'], '.epub'))
-			$attributes['zip'] = 'true';
-		else
-			$attributes['path'] = rtrim($attributes['path'], '/') . '/'; // ensure non-epubs end with a folder sep
-
-		if (!empty( $attributes['zip'] ))
-			$attributes['zip'] = true; // enforce boolean
+		$attributes['src'] = '/'.ltrim($attributes['src'], '/'); // ensure absolute path
+		if ( !strstr($attributes['src'], '.epub'))
+			$attributes['src'] = rtrim($attributes['src'], '/') . '/'; // ensure non-epubs end with a folder sep
 
 
+/*
+		//$epubjs_url = plugin_dir_url( __FILE__ ) . 'epubjs/';
 		wp_enqueue_style( $this->plugin_name);
 		//wp_enqueue_script( $this->plugin_name);
 		wp_enqueue_script( $this->plugin_name . '-fs'     );
@@ -131,7 +159,7 @@ class Epub_Reader_Public {
 		if ($attributes['zip']) 
 			// add zip script if we're dealing directly with an .epub
 			wp_enqueue_script( $this->plugin_name . '-zip' );
-
+*/
 
 		// Call the view file, capture it into the output buffer, and then return it.
 		ob_start();

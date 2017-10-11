@@ -26,13 +26,13 @@
 class Epub_Reader_PostType {
 	
 	public function init($loader) { //$loader is EPub_Reader_Loader
-		$loader->add_action( 'init', $this, 'register' );
+		$loader->add_action( 'init', $this, 'register_post_type' );
 		$loader->add_filter( 'default_content', $this, 'set_default_content', 10, 2 );
 		$loader->add_filter( 'single_template', $this, 'filter_page_template');
 		$loader->add_filter( 'page_template', $this, 'filter_page_template' );
 	}
 
-	public function register() {
+	public function register_post_type() {
 
 		$args = array (
 			'label' => esc_html__( 'ePub Reader Pages', 'text-domain' ),
@@ -162,7 +162,7 @@ class Epub_Reader_PostType {
 
 	public function set_default_content($content, $post) { // from https://wordpress.stackexchange.com/a/26028
 		if ($post->post_type == EPUB_READER_POSTTYPE)
-			$content = '['.EPUB_READER_SHORTCODE.' path="/path/to/ebook/"]';
+			$content = '['.EPUB_READER_SHORTCODE.' src="/path/to/ebook/" width="100%" height="100%"]';
 
 	    return $content;
 	}

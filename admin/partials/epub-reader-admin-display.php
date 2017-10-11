@@ -23,14 +23,13 @@
 <p>The following parameters can be specified to the shortcode [epub-reader]:</p>
 
 <dl>
-	<dt>path</dt><dd>Defaults to 'epub/', which correlates to <em>http://&lt;wp-install-location&gt;/epub/</em>. Note that the path is <em>always</em> relative to the wordpress installation. Full URI's are not supported at this time.</dd>
+	<dt>src</dt><dd>Defaults to 'epub/', which correlates to <em>http://&lt;wp-install-location&gt;/epub/</em>. Note that the path is <em>always</em> relative to the wordpress installation. Full URI's are not supported at this time.</dd>
 </dl>
 
 <h3>Examples</h3>
 <ol>
-<li>[epub-reader path="uploads/Wuthering_Heights.epub" zip="true"]. (Loads the compressed book from <em>http://&lt;wp-install-location&gt;/uploads/Wuthering_Heights.epub</em>)</li>
-<li>[epub-reader path="uploads/Wuthering_Heights.epub"]. (Same as above, because .epub must be manually unzipped on the client -- which is <em>very</em> inefficient)</li>
-<li>[epub-reader path="epubs/Wuthering_Heights/"]. (Loads from an unpacked epub <em>http://&lt;wp-install-location&gt;/epubs/Wuthering_Heights/</em>. This is the most efficient method)</li>
+<li>[epub-reader src="uploads/Wuthering_Heights.epub"]. (Loads the compressed book from <em>http://&lt;wp-install-location&gt;/uploads/Wuthering_Heights.epub. Note this is very inefficient!</em>)</li>
+<li>[epub-reader src="epubs/Wuthering_Heights/"]. (Loads from an unpacked epub <em>http://&lt;wp-install-location&gt;/epubs/Wuthering_Heights/</em>. This is the most efficient method)</li>
 </ol>
 
 <div id="wrap">

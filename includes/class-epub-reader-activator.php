@@ -33,7 +33,7 @@ class Epub_Reader_Activator {
 		// Page Arguments
 		$page_args = array(
 			'post_title'   => __( 'ebook Demo', 'ebook-demo' ),
-			'post_content' => '[epub-reader path="wp-content/plugins/epub-reader/public/epubjs/ebook"]',
+			'post_content' => '[epub-reader src="wp-content/plugins/epub-reader/public/epubjs/ebook"]',
 			'post_status'  => 'publish',
 			'post_type'    => EPUB_READER_POSTTYPE
 		);
