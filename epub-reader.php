@@ -16,8 +16,8 @@
  * Plugin Name:       EPub Reader
  * Plugin URI:        https://kodespace.com/epub-reader
  * GitHub Plugin URI: cmroanirgo/epub-reader
- * Description:       An epub reader, based on futurepress' epub.js.
- * Version:           0.9.4
+ * Description:       An epub reader, mobile ready. Shortcode: [epub-reader src="/epubs/yourbook"].
+ * Version:           0.9.6
  * Author:            Craig
  * Author URI:        https://kodespace.com
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PLUGIN_NAME_VERSION', '0.9.4' );
+define( 'PLUGIN_NAME_VERSION', '0.9.6' );
 
 /**
  * The code that runs during plugin activation.

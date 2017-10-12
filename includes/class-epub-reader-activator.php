@@ -45,6 +45,8 @@ class Epub_Reader_Activator {
 		$_page_id = wp_insert_post( $page_args );
 		// Save page id to the database.
 		add_option( 'epub_reader_page_id', $_page_id );
+
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -68,6 +70,7 @@ class Epub_Reader_Activator {
 			delete_option( 'epub_reader_page_id' );
 
 		}
+		flush_rewrite_rules();
 	}
 
 }

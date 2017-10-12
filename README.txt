@@ -30,7 +30,7 @@ Just drop in the shortcode into your blog posts or pages to embed an iFrame with
 
 eg.
 
-`[epub-reader path="some/path.epub" width="640" height="480"]`
+`[epub-reader src="some/path.epub" width="640" height="480"]`
 
 
 === Custom Post Type ===
@@ -42,12 +42,15 @@ In the admin area, you'll see 'ePub Reader Pages' which are pages that are desig
 
 This section describes how to install the plugin and get it working. Choose one method.
 
+Make sure you 
+
 ## Use Github Updater
 
 If you have already installed [Github Updater](https://github.com/afragen/github-updater), then use that.
 
 1. Open Github Updater settings and click the 'Install Plugin' tab.
-1. Enter `cmroanirgo/epub-reader` as the Plugin URI and then Install.
+2. Enter `cmroanirgo/epub-reader` as the Plugin URI and then Install.
+3. Go to the Plugins screen and click __Activate__.
 
 If you do not have [Github Updater](https://github.com/afragen/github-updater), then you may wish to do so. It is the recommended way to install and keep up-to-date.
 
@@ -70,15 +73,15 @@ Check out the Codex for more information about [installing plugins manually](htt
 
 ### Git
 
-Using git, browse to your `/wp-content/plugins/` directory and clone this repository:
+1. Using git, browse to your `/wp-content/plugins/` directory and clone this repository:
 
 `git clone https://github.com/cmroanirgo/epub-reader.git`
 
-Then go to your Plugins screen and click __Activate__.
+2. Go to the Plugins screen and click __Activate__.
 
 == Usage ==
 
-1. Place `[epub-reader path="some/path.epub"]` in your posts or pages, OR you can also use 'ePub Reader Pages'
+1. Place `[epub-reader src="some/path.epub"]` in your posts or pages, OR you can also use 'ePub Reader Pages'
 
 
 == Frequently Asked Questions ==
