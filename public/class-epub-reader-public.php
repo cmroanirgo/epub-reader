@@ -11,31 +11,6 @@
  */
 
 
-/** keep
-
-
-
-from: https://wordpress.stackexchange.com/a/17138
-
-	The "registered" attribute lists registered scripts and 
-	the "queue" attribute lists queue scripts on both of the above objects.
-
-function pm_remove_all_scripts() {
-    global $wp_scripts;
-    $wp_scripts->queue = array();
-}
-add_action('wp_print_scripts', 'pm_remove_all_scripts', 100);
-function pm_remove_all_styles() {
-    global $wp_styles;
-    $wp_styles->queue = array();
-}
-add_action('wp_print_styles', 'pm_remove_all_styles', 100);
-
-
-
-
-
-*/
 
 /**
  * The public-facing functionality of the plugin.
