@@ -121,8 +121,8 @@ class Epub_Reader_Admin {
 		// Create our settings page as a submenu page.
 		add_submenu_page(
 			'tools.php',                             // parent slug
-			__( 'Epub Reader', 'epub-reader' ),      // page title
-			__( 'Epub Reader', 'epub-reader' ),      // menu title
+			__( 'ePub Reader', 'epub-reader' ),      // page title
+			__( 'ePub Reader', 'epub-reader' ),      // menu title
 			'manage_options',                        // capability
 			'epub-reader',                           // menu_slug
 			array( $this, 'display_settings_page' )  // callable function
@@ -148,6 +148,7 @@ class Epub_Reader_Admin {
 	 */
 	public function register_settings() {
 
+		/*
 		// Here we are going to register our setting.
 		register_setting(
 			$this->plugin_name . '-settings',
@@ -252,7 +253,7 @@ class Epub_Reader_Admin {
 				'default'   => __( 'You don\'t have any saved items.', 'epub-reader' )
 			)
 		);
-
+		*/
 	}
 
 	/**

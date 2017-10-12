@@ -12,18 +12,23 @@
  * @subpackage Epub_Reader/admin/partials
  */
 ?>
+<style>
+dl.epub-reader-dl dt { font-weight:bold;font-size:1.1em;margin-left:0.5em;}
+span.epub-reader-sc { font-weight: bold; font-style:italic; font-size: 1.1em; }
+</style>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<p>This is the epub settings page.</p>
+<h2>ePub Reader Shortcode</h2>
+<p>The following attributes can be specified in the shortcode <span class="epub-reader-sc">[epub-reader]</span>:</p>
 
-<p>Have a look at the demo page created automatically. It's called 'ebook Demo' and shows you how to using this plugin.</p>
-<p>If you have multiple ebooks to display, create a new page for each one and add the [epub-reader] shortcode to it.</p>
-
-<h2>Shortcode</h2>
-<p>The following parameters can be specified to the shortcode [epub-reader]:</p>
-
-<dl>
-	<dt>src</dt><dd>Defaults to 'epub/', which correlates to <em>http://&lt;wp-install-location&gt;/epub/</em>. Note that the path is <em>always</em> relative to the wordpress installation. Full URI's are not supported at this time.</dd>
+<dl class='epub-reader-dl'>
+	<dt>src</dt><dd>Defaults to 'epub/', which correlates to <em>http://&lt;wp-install-location&gt;/epub/</em>. Note that the path is <em>always</em> relative to the wordpress installation. Full URL's are not supported at this time.</dd>
+	<dt>version</dt><dd>Set a <em>version</em> of the book. Major changes (eg new chapters) should increase this value. eg. <em>version="2-beta"</em>. <br/>
+	Note: This has the effect of causing each user's individual reading position to be reset. However failure to do so will cause unexpected errors to the user's reading experience if the changes are large.</dd>
+	<dt>width</dt><dd>Set the width of the widget. eg <em>width="300px"</em>.</dd>
+	<dt>height</dt><dd>Set the height of the region. eg <em>height="480px"</em>.</dd>
+	<dt>style</dt><dd>Set any css style on the region directly. eg <em>style="min-height:480px"</em>.</dd>
+	<dt>class</dt><dd>Set any css class on the region. eg <em>class="some-ebook-class"</em>.</dd>
 </dl>
 
 <h3>Examples</h3>
@@ -35,9 +40,12 @@
 <div id="wrap">
 	<form method="post" action="options.php">
 		<?php
+			/*
+			see also: EPub_Reader_Admin:register_settings() to reinstate settings
 			settings_fields( 'epub-reader-settings' );
 			do_settings_sections( 'epub-reader-settings' );
 			submit_button();
+			*/
 		?>
 	</form>
 </div>
