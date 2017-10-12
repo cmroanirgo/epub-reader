@@ -40,14 +40,16 @@ In the admin area, you'll see 'ePub Reader Pages' which are pages that are desig
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+This section describes how to install the plugin and get it working. Choose one method.
 
-e.g.
+## Use Github Updater
 
-1. Download the latest release from [github](cmroanirgo/epub-reader/releases/latest)
-1. Upload `epub-reader-vXXXX.zip` to the `/wp-content/plugins/` directory and unzip it.
-1. Activate the plugin through the 'Plugins' menu in WordPress
+If you have already installed [Github Updater](https://github.com/afragen/github-updater), then use that.
 
+1. Open Github Updater settings and click the 'Install Plugin' tab.
+1. Enter `cmroanirgo/epub-reader` as the Plugin URI and then Install.
+
+If you do not have [Github Updater](https://github.com/afragen/github-updater), then you may wish to do so. It is the recommended way to install and keep up-to-date.
 
 ### Upload
 
