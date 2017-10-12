@@ -15,14 +15,16 @@
  * @wordpress-plugin
  * Plugin Name:       EPub Reader
  * Plugin URI:        https://kodespace.com/epub-reader
+ * GitHub Plugin URI: cmroanirgo/epub-reader
  * Description:       An epub reader, based on futurepress' epub.js.
- * Version:           0.9.0
+ * Version:           0.9.1
  * Author:            Craig
  * Author URI:        https://kodespace.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       epub-reader
  * Domain Path:       /languages
+ * Requires WP: 3.0.1
  */
 
 // If this file is called directly, abort.
@@ -30,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PLUGIN_NAME_VERSION', '0.9.0' );
+define( 'PLUGIN_NAME_VERSION', '0.9.1' );
 
 /**
  * The code that runs during plugin activation.
