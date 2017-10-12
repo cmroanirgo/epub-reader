@@ -44,10 +44,40 @@ This section describes how to install the plugin and get it working.
 
 e.g.
 
-1. Download the latest release from [github](https://github.com/cmroanirgo/epub-reader/releases/latest)
+1. Download the latest release from [github](cmroanirgo/epub-reader/releases/latest)
 1. Upload `epub-reader-vXXXX.zip` to the `/wp-content/plugins/` directory and unzip it.
 1. Activate the plugin through the 'Plugins' menu in WordPress
+
+
+### Upload
+
+1. Download the latest [tagged archive](cmroanirgo/epub-reader/releases/latest) (choose the "zip" option).
+2. Unzip the archive, rename the folder correctly to `epub-reader`, then re-zip the file.
+3. Go to the __Plugins -> Add New__ screen and click the __Upload__ tab.
+4. Upload the zipped archive directly.
+5. Go to the Plugins screen and click __Activate__.
+
+### Manual
+
+1. Download the latest [tagged archive](cmroanirgo/epub-reader/releases/latest) (choose the "zip" option).
+2. Unzip the archive, rename the folder to `epub-reader`.
+3. Copy the folder to your `/wp-content/plugins/` directory.
+4. Go to the Plugins screen and click __Activate__.
+
+Check out the Codex for more information about [installing plugins manually](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+
+### Git
+
+Using git, browse to your `/wp-content/plugins/` directory and clone this repository:
+
+`git clone https://github.com/cmroanirgo/epub-reader.git`
+
+Then go to your Plugins screen and click __Activate__.
+
+== Usage ==
+
 1. Place `[epub-reader path="some/path.epub"]` in your posts or pages, OR you can also use 'ePub Reader Pages'
+
 
 == Frequently Asked Questions ==
 
