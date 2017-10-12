@@ -48,8 +48,8 @@ function activate_epub_reader() {
  * This action is documented in includes/class-epub-reader-deactivator.php
  */
 function deactivate_epub_reader() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-epub-reader-deactivator.php';
-	Epub_Reader_Deactivator::deactivate();
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-epub-reader-activator.php';
+	Epub_Reader_Activator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_epub_reader' );
