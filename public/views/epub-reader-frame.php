@@ -146,7 +146,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks.min.js"></script>
 
         <!-- Reader -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.min.js"></script>
 
         <!-- Protection -->
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js"></script>

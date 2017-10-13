@@ -844,7 +844,7 @@ input:-ms-placeholder {
 
 
 @media only screen and (max-width: 550px) {
-	#titlebar a { font-size: 1.4em; }
+	#titlebar a, #sidebar-buttons { font-size: 1.6em; }
 	#viewer-container{
 		width: 86%;
 		height: 99%;
@@ -862,12 +862,6 @@ input:-ms-placeholder {
 
 	#sidebar {
 		width: 200px;
-	}
-	#main.closed {
-		/* left: 200px; */
-		-webkit-transform: translate(200px, 0);
-		-moz-transform: translate(200px, 0);
-		-ms-transform: translate(200px, 0);
 	}
 
 	#titlebar {
