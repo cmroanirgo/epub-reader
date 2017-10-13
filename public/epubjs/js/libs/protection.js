@@ -3,6 +3,8 @@ Copyright kodespace.com
 */
 jQuery(document).ready(function()
 {
+	if (window.location.href.search('http://test.dev')>=0)
+		return;
 	console.log("copy protection enabled")
 	jQuery(document).bind("cut copy paste",function(e) {
 		e.preventDefault();

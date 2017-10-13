@@ -373,9 +373,8 @@ EPUBJS.reader.ControlsController = function(book) {
 
 	var $store = $("#store"),
 			$fullscreen = $("#fullscreen"),
-			$fullscreenicon = $("#fullscreenicon"),
-			$cancelfullscreenicon = $("#cancelfullscreenicon"),
-			$slider = $("#slider"),
+			$menu = $("#menu"),
+			$sidebar_closer = $("#sidebar-closer"),
 			$main = $("#main"),
 			$sidebar = $("#sidebar"),
 			
@@ -396,17 +395,22 @@ EPUBJS.reader.ControlsController = function(book) {
 	book.on("book:online", goOnline);
 	book.on("book:offline", goOffline);
 
-	$slider.on("click", function () {
+	$menu.on("click", function () {
 		if(reader.sidebarOpen) {
 			reader.SidebarController.hide();
-			$slider.addClass("icon-menu");
-			$slider.removeClass("icon-right");
+			$menu.addClass("icon-menu");
+			$menu.removeClass("icon-cancel");
 		} else {
 			reader.SidebarController.show();
-			$slider.addClass("icon-right");
-			$slider.removeClass("icon-menu");
+			$menu.addClass("icon-cancel");
+			$menu.removeClass("icon-menu");
 		}
 	});
+	$sidebar_closer.on('click', function() {
+		reader.SidebarController.hide();
+		$menu.addClass("icon-menu");
+		$menu.removeClass("icon-right");
+	})
 
 	if(typeof screenfull !== 'undefined') {
 		$fullscreen.on("click", function() {
@@ -928,7 +932,7 @@ EPUBJS.reader.SidebarController = function(book) {
 	var reader = this;
 
 	var $sidebar = $("#sidebar"),
-			$panels = $("#panels");
+			$btns = $("#sidebar-buttons");
 
 	var activePanel = "Toc";
 
@@ -940,8 +944,8 @@ EPUBJS.reader.SidebarController = function(book) {
 		reader[controllerName].show();
 		activePanel = viewName;
 
-		$panels.find('.active').removeClass("active");
-		$panels.find("#show-" + viewName ).addClass("active");
+		$btns.find('.active').removeClass("active");
+		$btns.find("#show-" + viewName ).addClass("active");
 	};
 	
 	var getActivePanel = function() {
@@ -960,7 +964,7 @@ EPUBJS.reader.SidebarController = function(book) {
 		$sidebar.removeClass("open");
 	}
 
-	$panels.find(".show_view").on("click", function(event) {
+	$btns.find(".show_view").on("click", function(event) {
 		var view = $(this).data("view");
 
 		changePanelTo(view);

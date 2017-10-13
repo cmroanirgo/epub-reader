@@ -146,7 +146,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks.min.js"></script>
 
         <!-- Reader -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.min.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.js"></script>
 
         <!-- Protection -->
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js"></script>
@@ -159,32 +159,11 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
 
     </head>
     <body>
-      <div id="sidebar">
-        <div id="panels">
-          <a id="show-Toc" class="show_view icon-list-1 active" data-view="Toc" title="Contents">&nbsp;</a>
-          <a id="show-Bookmarks" class="show_view icon-bookmark" data-view="Bookmarks" title="Bookmarks">&nbsp;</a>
-          <!--<a id="show-Notes" class="show_view icon-edit" data-view="Notes">&nbsp;</a>-->
-
-        </div>
-        <div id="tocView" class="view">
-        </div>
-        <div id="bookmarksView" class="view">
-          <ul id="bookmarks"></ul>
-        </div>
-        <!--<div id="notesView" class="view">
-          <div id="new-note">
-            <textarea id="note-text"></textarea>
-            <button id="note-anchor">Anchor*</button>
-            <p><em>* Click 'Anchor' and then click in the document on where you want the note to be.</em></p>
-          </div>
-          <ol id="notes"></ol>
-        </div>-->
-      </div>
       <div id="main" class="flex vertical spaced">
 
         <div id="titlebar" class="flex spaced middle">
           <div id="opener" class="cell">
-            <a id="slider" class="icon-menu" title="Menu">&nbsp;</a>
+            <a id="menu" class="icon-menu" title="Menu">&nbsp;</a>
           </div>
           <div id="metainfo" class="cell">
             <span id="book-title"></span>
@@ -192,10 +171,10 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
             <span id="chapter-title"></span>
           </div>
           <div id="title-controls" class="cell">
-            <a id="font-up"   style="font-size:1.1em" title="Increase Font">A+</a>
+            <a id="font-up"   title="Increase Font">A+</a>
             <a id="font-down" style="font-size:0.9em" title="Decrease Font">A-</a>
             <a id="bookmark" class="icon-bookmark-empty" title="Toggle Bookmark">&nbsp;</a>
-            <a id="fullscreen" class="icon-resize-full"  title="Toggel Fullscreen">&nbsp;</a>
+            <a id="fullscreen" class="icon-resize-full"  title="Toggle Fullscreen">&nbsp;</a>
           </div>
         </div>
         <div id="_main" class="flex-grow">
@@ -209,6 +188,28 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
 
 	        <div id="loader"><img src="<?php echo $epubjs_url; ?>img/loader.gif"></div>
 	     </div>
+      </div>
+      <div id="sidebar" class="flex vertical">
+        <div id="sidebar-buttons">
+          <a id="show-Toc" class="show_view icon-book active" data-view="Toc" title="Contents">&nbsp;</a>
+          <a id="show-Bookmarks" class="show_view icon-bookmark" data-view="Bookmarks" title="Bookmarks">&nbsp;</a>
+          <!--<a id="show-Notes" class="show_view icon-edit" data-view="Notes">&nbsp;</a>-->
+
+          <a id="sidebar-closer" class="icon-cancel" title="Close">&nbsp;</a>
+        </div>
+        <div id="tocView" class="sidebar-panel">
+        </div>
+        <div id="bookmarksView" class="sidebar-panel">
+          <ul id="bookmarks"></ul>
+        </div>
+        <!--<div id="notesView" class="view">
+          <div id="new-note">
+            <textarea id="note-text"></textarea>
+            <button id="note-anchor">Anchor*</button>
+            <p><em>* Click 'Anchor' and then click in the document on where you want the note to be.</em></p>
+          </div>
+          <ol id="notes"></ol>
+        </div>-->
       </div>
       
     </body>
