@@ -42,7 +42,6 @@ In the admin area, you'll see 'ePub Reader Pages' which are pages that are desig
 
 This section describes how to install the plugin and get it working. Choose one method.
 
-Make sure you 
 
 ## Use Github Updater
 
