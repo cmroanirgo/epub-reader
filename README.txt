@@ -97,7 +97,7 @@ Yes. Although there may be some issues, the plugin is responsive in design and r
 
 The shortcode supports the following attributes:
 
-1. path="path/to/epub". This is mandatory
+1. src="path/to/epub". This is mandatory
 
 == Screenshots ==
 
