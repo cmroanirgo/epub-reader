@@ -47,7 +47,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <meta name="viewport" content="width=device-width, user-scalable=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="robots" content="noindex, nofollow">
 
@@ -70,6 +70,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
            "use strict";
 
            $(function() {
+           		$('html').removeClass('no-js');
            		var $cont = $('#viewer-container');
            		var $view = $('#viewer');
            		function fixViewerSize() {
@@ -88,8 +89,12 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
            			window.location.href = "<?php echo $root_url; ?>";
            			return;
            		}
+
+           		var isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(navigator.userAgent));
+           		var isAppleWebKit = (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1);
              	console.log("Using epub.js v" + EPUBJS.VERSION);
                 console.log("Base uri: <?php echo $epubjs_url; ?>");
+                console.log("isMObile: "+ isMobile+"       isAppleWebKit: " + isAppleWebKit);
                 EPUBJS.filePath = "<?php echo $epubjs_url; ?>js/libs/";
                 EPUBJS.cssPath = "<?php echo $epubjs_url; ?>css/";
 
@@ -102,11 +107,30 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
                 var bookKey = path + '>v' + version;
             	console.log("book key: "+bookKey);
 
-                //window.reader = ePubReader("ebook.epub");
-                window.reader = ePubReader(path, {
-                	restore: cacheable
-                	, bookKey: bookKey
-                });
+            	var settings = {
+                	restore: cacheable,
+                	bookKey: bookKey
+            	};
+            	if (isAppleWebKit) { // add fixed layout settings for mobile
+            		settings.width = $('#viewer').width();
+            		settings.height = $('#viewer').height();
+            		if (isMobile)
+            			$('#fullscreen').hide(); // it doesn't work on mobile safari!
+            	}
+
+                window.reader = ePubReader(path, settings);
+            	if (isAppleWebKit) {
+            		$(window).on("orientationchange resize",function(){
+            			console.log('rotated/resized')
+            			
+	            		setTimeout(function() { // give some time to settle before resizing fixed viewport area
+	            			settings.width = $('#viewer').width();
+		            		settings.height = $('#viewer').height();
+		            		window.reader.book.renderer.resize(settings.width, settings.height, true);
+		            		//console.log('window size is now: ' + settings.width + 'x' + settings.height)
+	            		}, 100)
+					});
+            	}
 
 
 				var fnNothing = function(e) { if (e) e.preventDefault(); return false; };
@@ -152,6 +176,9 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js"></script>
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/protection.js"></script>
 
+        <!-- misc -->
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/book_styles.js"></script>
+
         <!-- Highlights -->
         <!--
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/jquery.highlight.js"></script>
@@ -172,7 +199,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
           </div>
           <div id="title-controls" class="cell">
             <a id="font-up"   title="Increase Font">A+</a>
-            <a id="font-down" style="font-size:0.9em" title="Decrease Font">A-</a>
+            <a id="font-down" style="font-size:0.9em;" title="Decrease Font">A-</a>
             <a id="bookmark" class="icon-bookmark-empty" title="Toggle Bookmark">&nbsp;</a>
             <a id="fullscreen" class="icon-resize-full"  title="Toggle Fullscreen">&nbsp;</a>
           </div>
