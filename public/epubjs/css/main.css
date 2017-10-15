@@ -727,9 +727,6 @@ input:-ms-placeholder {
 		width: 200px;
 	}
 
-	#titlebar {
-	}
-
 	#titlebar #metainfo { 
 		font-size: 0.55em; 
 		-webkit-box-ordinal-group: 101; /* move to end */
