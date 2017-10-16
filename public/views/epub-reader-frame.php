@@ -98,8 +98,6 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
                 console.log('has localStorage: ' + (!!localStorage));
                 EPUBJS.filePath = "<?php echo $epubjs_url; ?>js/libs/";
                 EPUBJS.cssPath = "<?php echo $epubjs_url; ?>css/";
-                if (window.location.href.search('http://test.dev')>=0)
-                	$('#viewer-overlay').hide();
 
             	var cacheable = true; // window.location.href.search('http://localhost:8181')<0 && window.location.href.search('file://')<0;
             	var path = "<?php echo $book_path ?>"
