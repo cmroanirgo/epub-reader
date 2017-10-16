@@ -2547,7 +2547,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 'use strict';
 
 var EPUBJS = EPUBJS || {};
-EPUBJS.VERSION = "0.2.19";
+EPUBJS.VERSION = "0.2.20-cm-fork";
 
 EPUBJS.plugins = EPUBJS.plugins || {};
 
@@ -6916,10 +6916,12 @@ EPUBJS.Render.Iframe.prototype.resize = function(width, height){
 
 	this.element.style.height = height;
 
-
+/*
+	CM: This 'fix' has been the cause of much irksomeness! It introduces an 'out by one' error between the iframe and the columns itself, particularly seen on mobiles & safari
 	if(!isNaN(width) && width % 2 !== 0){
 		width += 1; //-- Prevent cutting off edges of text in columns
 	}
+*/
 
 	this.element.style.width = width;
 

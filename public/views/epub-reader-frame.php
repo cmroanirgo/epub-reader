@@ -94,10 +94,11 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
            		var isAppleWebKit = (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1);
              	console.log("Using epub.js v" + EPUBJS.VERSION);
                 console.log("Base uri: <?php echo $epubjs_url; ?>");
-                console.log("isMObile: "+ isMobile+"       isAppleWebKit: " + isAppleWebKit);
+                console.log("isMobile: "+ isMobile+"       isAppleWebKit: " + isAppleWebKit);
                 EPUBJS.filePath = "<?php echo $epubjs_url; ?>js/libs/";
                 EPUBJS.cssPath = "<?php echo $epubjs_url; ?>css/";
-
+                if (window.location.href.search('http://test.dev')>=0)
+                	$('#viewer-overlay').hide();
 
             	var cacheable = true; // window.location.href.search('http://localhost:8181')<0 && window.location.href.search('file://')<0;
             	var path = "<?php echo $book_path ?>"
