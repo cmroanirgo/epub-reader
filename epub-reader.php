@@ -17,7 +17,7 @@
  * Plugin URI:        https://github.com/cmroanirgo/epub-reader
  * GitHub Plugin URI: cmroanirgo/epub-reader
  * Description:       An epub reader, mobile ready. Shortcode: [epub-reader src="/epubs/yourbook"].
- * Version:           0.9.13
+ * Version:           0.9.14
  * Author:            Craig
  * Author URI:        https://kodespace.com/epub-reader
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PLUGIN_NAME_VERSION', '0.9.13' );
+define( 'PLUGIN_NAME_VERSION', '0.9.14' );
 
 /**
  * The code that runs during plugin activation.

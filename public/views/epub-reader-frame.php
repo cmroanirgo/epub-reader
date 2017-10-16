@@ -95,6 +95,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
              	console.log("Using epub.js v" + EPUBJS.VERSION);
                 console.log("Base uri: <?php echo $epubjs_url; ?>");
                 console.log("isMobile: "+ isMobile+"       isAppleWebKit: " + isAppleWebKit);
+                console.log('has localStorage: ' + (!!localStorage));
                 EPUBJS.filePath = "<?php echo $epubjs_url; ?>js/libs/";
                 EPUBJS.cssPath = "<?php echo $epubjs_url; ?>css/";
                 if (window.location.href.search('http://test.dev')>=0)
@@ -132,6 +133,20 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
 	            		}, 100)
 					});
             	}
+
+            	var saveTimeout = -1;
+            	var fnSaveSettings = function() {
+            		if (saveTimeout>0)// cancel (& hence reset) any existing timeouts
+            			clearTimeout(saveTimeout);
+            		saveTimeout = setTimeout(function() {
+            			console.log('saving...')
+            			saveTimeout = -1;
+            			window.reader.saveSettings();
+            		}, 1000);
+            	}
+            	window.reader.book.on('renderer:locationChanged', fnSaveSettings);
+            	window.reader.on('reader:bookmarked', fnSaveSettings);
+            	window.reader.on('reader:unbookmarked', fnSaveSettings);
 
 
 				var fnNothing = function(e) { if (e) e.preventDefault(); return false; };
