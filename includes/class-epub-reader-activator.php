@@ -50,9 +50,7 @@ class Epub_Reader_Activator {
 	}
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Called when the plugin is deactivated.
 	 *
 	 * @since    0.9.0
 	 */
@@ -73,4 +71,19 @@ class Epub_Reader_Activator {
 		flush_rewrite_rules();
 	}
 
+	/**
+	 * Called when the plugin is updated.
+	 *
+	 * @since    0.9.19
+	 */
+	public static function updated() {
+		if ( function_exists('wp_cache_flush') )
+			wp_cache_flush();
+
+		if ( function_exists('w3tc_pgcache_flush') )
+			w3tc_pgcache_flush();
+
+		if ( function_exists('wp_cache_clear_cache') )
+			wp_cache_clear_cache();
+	}
 }

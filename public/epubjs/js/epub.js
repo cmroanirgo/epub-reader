@@ -2547,11 +2547,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 'use strict';
 
 var EPUBJS = EPUBJS || {};
-EPUBJS.VERSION = "0.2.20-cm-fork";
+EPUBJS.VERSION = "0.2.22-cm-fork";
 
 EPUBJS.plugins = EPUBJS.plugins || {};
 
 EPUBJS.filePath = EPUBJS.filePath || "/epubjs/";
+//EPUBJS.cacheVersion = '1.2.3', optionally set by main script to add "?ver=1.2.3" to each css and js loaded. See core.js
 
 EPUBJS.Render = {};
 
@@ -4693,6 +4694,14 @@ EPUBJS.core.dataURLToBlob = function(dataURL) {
 	return new Blob([uInt8Array], {type: contentType});
 };
 
+EPUBJS.core.addCacheVerToUrl = function(url) {
+	if (!EPUBJS.cacheVersion)
+		return url;
+	var ver = 'ver=' + EPUBJS.cacheVersion;// + '_' + EPUBJS.VERSION;
+	return url + (url.indexOf('?')>0 ? '&' : '?') + ver;
+}
+
+
 //-- Load scripts async: http://stackoverflow.com/questions/7718935/load-scripts-asynchronously
 EPUBJS.core.addScript = function(src, callback, target) {
 	var s, r;
@@ -4700,7 +4709,7 @@ EPUBJS.core.addScript = function(src, callback, target) {
 	s = document.createElement('script');
 	s.type = 'text/javascript';
 	s.async = false;
-	s.src = src;
+	s.src = EPUBJS.core.addCacheVerToUrl(src);
 	s.onload = s.onreadystatechange = function() {
 		if ( !r && (!this.readyState || this.readyState == 'complete') ) {
 			r = true;
@@ -4732,7 +4741,7 @@ EPUBJS.core.addCss = function(src, callback, target) {
 	s = document.createElement('link');
 	s.type = 'text/css';
 	s.rel = "stylesheet";
-	s.href = src;
+	s.href = EPUBJS.core.addCacheVerToUrl(src);
 	s.onload = s.onreadystatechange = function() {
 		if ( !r && (!this.readyState || this.readyState == 'complete') ) {
 			r = true;

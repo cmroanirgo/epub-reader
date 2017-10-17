@@ -6,6 +6,8 @@
  *
  * This is the template that displays all epub pages by default.
  */
+//define('DONOTCACHEPAGE', true); // disable WP Super Cache & company for this page. 
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js epub-reader-html">
 <head>

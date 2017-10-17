@@ -36,8 +36,9 @@ function getUrl() {
 $root_url = dirname(dirname(getUrl()));
 $epubjs_url = $root_url.'/epubjs/';
 $book_path = htmlspecialchars(urldecode($_GET["src"]));
-$book_version = htmlspecialchars($_GET["v"]) || '1';
+$book_version = htmlspecialchars($_GET["v"]);
 $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
+$cache_version = htmlspecialchars($_GET["cv"]);
 
 ?>
 <!DOCTYPE html>
@@ -51,8 +52,8 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="robots" content="noindex, nofollow">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo $epubjs_url; ?>css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo $epubjs_url; ?>css/main.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $epubjs_url; ?>css/normalize.css?ver=<?php echo $cache_version; ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo $epubjs_url; ?>css/main.css?ver=<?php echo $cache_version; ?>">
         <!--<link rel="stylesheet" href="<?php echo $epubjs_url; ?>css/popup.css">-->
 		<style type="text/css">
 		@media print { 
@@ -60,10 +61,10 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
 			body:after { content: "WARNING:  UNAUTHORIZED USE AND/OR DUPLICATION OF THIS MATERIAL WITHOUT EXPRESS AND WRITTEN PERMISSION FROM THIS SITE'S AUTHOR AND/OR OWNER IS STRICTLY PROHIBITED! CONTACT US FOR FURTHER CLARIFICATION."; }
 		}
 		</style>
-        <script src="<?php echo $epubjs_url; ?>js/libs/jquery.min.js"></script>
+        <script src="<?php echo $epubjs_url; ?>js/libs/jquery.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <?php if ($book_zip) { ?>
-        <script src="<?php echo $epubjs_url; ?>js/libs/zip.min.js"></script>
+        <script src="<?php echo $epubjs_url; ?>js/libs/zip.min.js?ver=<?php echo $cache_version; ?>"></script>
         <?php } ?>
 
         <script>
@@ -98,13 +99,14 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
                 console.log('has localStorage: ' + (!!localStorage));
                 EPUBJS.filePath = "<?php echo $epubjs_url; ?>js/libs/";
                 EPUBJS.cssPath = "<?php echo $epubjs_url; ?>css/";
+                EPUBJS.cacheVersion = "<?php echo $cache_version; ?>";
+                EPUBJS.bookVersion = "<?php echo $book_version; ?>";
 
             	var cacheable = true; // window.location.href.search('http://localhost:8181')<0 && window.location.href.search('file://')<0;
             	var path = "<?php echo $book_path ?>"
-            	var version = "<?php echo $book_version; ?>"
         		console.info('cacheable: '+cacheable);
         		console.info('book path: '+path);
-                var bookKey = path + '>v' + version;
+                var bookKey = path + '>v' + EPUBJS.bookVersion;
             	console.log("book key: "+bookKey);
 
             	var settings = {
@@ -137,7 +139,7 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
             		if (saveTimeout>0)// cancel (& hence reset) any existing timeouts
             			clearTimeout(saveTimeout);
             		saveTimeout = setTimeout(function() {
-            			console.log('saving...')
+            			//console.log('saving...')
             			saveTimeout = -1;
             			window.reader.saveSettings();
             		}, 1000);
@@ -172,26 +174,26 @@ $book_zip = strstr($book_path, '.epub') || htmlspecialchars($_GET["zip"])=='1';
         <!--<script src="<?php echo $epubjs_url; ?>js/libs/localforage.min.js"></script>-->
 
         <!-- Full Screen -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/screenfull.min.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/screenfull.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Touch -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/jquery.touchswipe.min.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/jquery.touchswipe.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Render -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/epub.min.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/epub.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Hooks -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks.min.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Reader -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.min.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Protection -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js"></script>
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/protection.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js?ver=<?php echo $cache_version; ?>"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/protection.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- misc -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/book_styles.js"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks/extensions/book_styles.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Highlights -->
         <!--

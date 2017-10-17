@@ -11,7 +11,7 @@
  * @subpackage Epub_Reader/public/partials
  */
 
-$epubsrc = plugin_dir_url( dirname(__FILE__) ).'views/epub-reader-frame.php?src='.urlencode($attributes['src']).'&v='.$attributes['version'];
+$epubsrc = plugin_dir_url( dirname(__FILE__) ).'views/epub-reader-frame.php?src='.urlencode($attributes['src']).'&v='.$attributes['version'].'&cv='.PLUGIN_NAME_VERSION;
 $iframe_attr = '';
 if (!empty($attributes['width']))
 	$iframe_attr .= 'width="'.$attributes['width'].'" ';
