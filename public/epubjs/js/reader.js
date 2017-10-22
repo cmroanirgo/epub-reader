@@ -793,6 +793,7 @@ EPUBJS.reader.ReaderController = function(book) {
 			$prev = $("#prev");
 	var reader = this;
 	var book = this.book;
+	var _hasTwoPageSpreads = false;
 	var slideIn = function() {
 		$main.removeClass("closed");
 	};
@@ -803,24 +804,12 @@ EPUBJS.reader.ReaderController = function(book) {
 
 	var showLoader = function() {
 		$loader.show();
-		hideDivider();
+		$divider.hide();
 	};
 
 	var hideLoader = function() {
 		$loader.hide();
-		
-		//-- If the book is using spreads, show the divider
-		// if(book.settings.spreads) {
-		// 	showDivider();
-		// }
-	};
-
-	var showDivider = function() {
-		$divider.addClass("show");
-	};
-
-	var hideDivider = function() {
-		$divider.removeClass("show");
+		$divider.toggle(_hasTwoPageSpreads);
 	};
 
 	var nextPage = function() {
@@ -861,6 +850,25 @@ EPUBJS.reader.ReaderController = function(book) {
 		}
 	}
 
+
+	var _loaderTimeout = -1;
+	var fnChapterDisplayed_Before = function() {
+		//console.debug('ChapterDisplayed_Before')
+		if (_loaderTimeout>0)
+			clearTimeout(_loaderTimeout);
+		_loaderTimeout = setTimeout(function() { // timer stops any fast 'flickering' if page is loading from disk, or is quick
+    		showLoader();
+    		_loaderTimeout = -1;
+		}, 300);
+
+	}
+	var fnChapterDisplayed_After = function() {
+		//console.debug('ChapterDisplayed_After')
+		if (_loaderTimeout>0) clearTimeout(_loaderTimeout);
+		_loaderTimeout = -1;
+		hideLoader();
+	}
+
 	document.addEventListener('keydown', arrowKeys, false);
 
 	$next.on("click", function(e){
@@ -875,6 +883,18 @@ EPUBJS.reader.ReaderController = function(book) {
 
 		e.preventDefault();
 	});
+
+	
+	book.on("renderer:spreads", function(bool){
+		var bChanged = _hasTwoPageSpreads !== bool;
+		_hasTwoPageSpreads = bool;
+		if (bChanged && $loader.is(':hidden')) // two page spread changed, but we're not loading
+			$divider.toggle(bool);
+
+	});
+	book.on('book:displayingChapter', fnChapterDisplayed_Before);
+	book.on('renderer:chapterDisplayed', fnChapterDisplayed_After);
+
 
 	// touch handling
 	if ($.fn.swipe) { // jquery.touchswipe.min.js
@@ -901,14 +921,6 @@ EPUBJS.reader.ReaderController = function(book) {
 	}
 	else
 		console.log('swipe not enabled')
-	
-	book.on("renderer:spreads", function(bool){
-		if(bool) {
-			showDivider();
-		} else {
-			hideDivider();
-		}
-	});
 
 	// book.on("book:atStart", function(){
 	// 	$prev.addClass("disabled");
@@ -921,10 +933,10 @@ EPUBJS.reader.ReaderController = function(book) {
 	return {
 		"slideOut" : slideOut,
 		"slideIn"  : slideIn,
-		"showLoader" : showLoader,
+//		"showLoader" : showLoader,
 		"hideLoader" : hideLoader,
-		"showDivider" : showDivider,
-		"hideDivider" : hideDivider,
+//		"showDivider" : showDivider,
+//		"hideDivider" : hideDivider,
 		"arrowKeys" : arrowKeys
 	};
 };

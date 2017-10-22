@@ -2547,7 +2547,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 'use strict';
 
 var EPUBJS = EPUBJS || {};
-EPUBJS.VERSION = "0.2.22-cm-fork";
+EPUBJS.VERSION = "0.2.23-cm-fork";
 
 EPUBJS.plugins = EPUBJS.plugins || {};
 
@@ -3455,6 +3455,7 @@ EPUBJS.Book.prototype.displayChapter = function(chap, end, deferred){
 
 	book.currentChapter = chapter;
 
+	book.trigger("book:displayingChapter", chapter);
 	render = book.renderer.displayChapter(chapter, this.globalLayoutProperties);
 	if(cfi) {
 		book.renderer.gotoCfi(cfi);
