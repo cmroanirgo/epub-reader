@@ -214,8 +214,8 @@ $cache_version = htmlspecialchars($_GET["cv"]);
             <span id="chapter-title"></span>
           </div>
           <div id="title-controls" class="cell">
-            <a id="font-up"   title="Increase Font">A+</a>
-            <a id="font-down" style="font-size:0.9em;" title="Decrease Font">A-</a>
+            <a id="font-up"   class="icon-font-up"       title="Increase Font">&nbsp;</a>
+            <a id="font-down" class="icon-font-down"     title="Decrease Font">&nbsp;</a>
             <a id="bookmark" class="icon-bookmark-empty" title="Toggle Bookmark">&nbsp;</a>
             <a id="fullscreen" class="icon-resize-full"  title="Toggle Fullscreen">&nbsp;</a>
           </div>
