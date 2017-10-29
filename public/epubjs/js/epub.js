@@ -2547,7 +2547,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 'use strict';
 
 var EPUBJS = EPUBJS || {};
-EPUBJS.VERSION = "0.2.23-cm-fork";
+EPUBJS.VERSION = "0.2.24-cm-fork";
 
 EPUBJS.plugins = EPUBJS.plugins || {};
 
