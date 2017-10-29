@@ -3,20 +3,26 @@ Copyright kodespace.com
 */
 jQuery(document).ready(function()
 {
+	var $ = jQuery;
 	if (window.location.href.search('http://test.dev')>=0)
 		return;
-	console.log("copy protection enabled")
-	jQuery(document).bind("cut copy paste",function(e) {
+	//console.log("copy protection enabled")
+	$('body').css({
+			cursor: 'default', 
+			'user-select': 'none',
+			'-moz-user-select': 'none',
+			'-webkit-user-select': 'none',
+			'-ms-user-select': 'none'}
+			);
+	$(document).bind("cut copy paste",function(e) {
 		e.preventDefault();
 	});
-	jQuery("html,body").on("contextmenu",function(e){
-	    //if (window.location.href.search('http://test.dev')>=0)
-	    //	return;
+	$("html,body").on("contextmenu",function(e){
 	    e.preventDefault();
 		return false;
 	});
-	jQuery(window).keydown(function(e) { deKey('keydown', e); });
- 	jQuery(window).keyup(function(e) { deKey('keyup', e); });
+	$(window).keydown(function(e) { deKey('keydown', e); });
+ 	$(window).keyup(function(e) { deKey('keyup', e); });
 
     var wasMetaKey = false;
 	function deKey(name, e){
