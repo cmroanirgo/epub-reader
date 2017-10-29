@@ -165,7 +165,7 @@ $cache_version = htmlspecialchars($_GET["cv"]);
 				$('#font-down').on('click', function(e) { return fontSizeHandler(e, -0.1); }).on('mousedown', fnNothing);
 				$('#font-reset').on('click', function(e) { redraw(1); return fnNothing(e); }).on('mousedown', fnNothing);
 				//$('#highlight').on('click', function(e) { return fnNothing(e); }).on('mousedown', fnNothing);
-
+				$(document).on('touchmove', function(e) { e.preventDefault(); }); // fix iOS 10+ page scrolling
 
 			})
         </script>
@@ -226,7 +226,7 @@ $cache_version = htmlspecialchars($_GET["cv"]);
 	        <div id="next" class="arrow"><span>›</span></div>
 	        <div id="viewer-container">
 	        	<div id="viewer"></div>
-	        	<div id="viewer-overlay"></div>
+	        	<!--<div id="viewer-overlay"></div>-->
 	    	</div>
 
 	        <div id="loader"><img src="<?php echo $epubjs_url; ?>img/loader.gif"></div>
