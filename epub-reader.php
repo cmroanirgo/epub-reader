@@ -60,7 +60,7 @@ function deactivate_epub_reader() {
 function updated_epub_reader( $upgrader_object, $options ) {
 	$current_plugin_path_name = plugin_basename( __FILE__ );
 
-	if ($options['action'] == 'update' && $options['type'] == 'plugin' ){
+	if ($options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] )){
 		foreach($options['plugins'] as $each_plugin){
 			if ($each_plugin==$current_plugin_path_name){
 				require_once plugin_dir_path( __FILE__ ) . 'includes/class-epub-reader-activator.php';
