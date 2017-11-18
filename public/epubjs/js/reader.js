@@ -904,6 +904,7 @@ EPUBJS.reader.ReaderController = function(book) {
 	if ($.fn.swipe) { // jquery.touchswipe.min.js
 		console.log('swipe enabled')
 
+		var $prevFrame = null;
 		var swipe_options = {
 			swipe:function(e, direction) {
 				switch((direction+'').toLowerCase()) {
@@ -933,12 +934,10 @@ EPUBJS.reader.ReaderController = function(book) {
 
 		book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
 			//console.log('injecting swipe')
-
-			var $iframedoc = $(book.renderer.render.document).ready(function() {
-				var $iframe = $(book.renderer.render.window);
-				setTimeout(function() { $iframe.swipe(swipe_options); }, 50);
-			});
-
+			if ($prevFrame)
+				$prevFrame.disable(); // as soon as we get a newChapter started, stop allowing any updates from previousChapter
+			var $iframe = $(book.renderer.render.window);
+			setTimeout(function() { $iframe.swipe(swipe_options); $prevFrame=$iframe}, 50);
 
 			if(callback) callback();        
 		});
