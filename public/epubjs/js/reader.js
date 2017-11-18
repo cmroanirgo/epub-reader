@@ -904,37 +904,39 @@ EPUBJS.reader.ReaderController = function(book) {
 	if ($.fn.swipe) { // jquery.touchswipe.min.js
 		console.log('swipe enabled')
 
+		var swipe_options = {
+			swipe:function(e, direction) {
+				switch((direction+'').toLowerCase()) {
+					case 'down':
+					case 'right':
+						prevPage();
+						flashArrow($prev);
+						break;
+					case 'up':
+					case 'left':
+						nextPage();
+						flashArrow($next);
+						break;
+				}
+			},
+/*				hold:function(e, target) {
+				var x = e.clientX;
+				var y = e.clientY;
+				beginHighlight(book.renderer.render.window, book.renderer.render.document, x, y);*
+			},*/
+			threshold:60,
+			triggerOnTouchEnd:false, // 
+			maxTimeThreshold:1000,
+			longTapThreshold:1000,
+			excludedElements: $.fn.swipe.defaults.excludedElements + ',a[href]'
+		};
+
 		book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
 			//console.log('injecting swipe')
 
 			var $iframedoc = $(book.renderer.render.document).ready(function() {
 				var $iframe = $(book.renderer.render.window);
-				$iframe.swipe( {
-					swipe:function(e, direction) {
-						switch((direction+'').toLowerCase()) {
-							case 'down':
-							case 'right':
-								prevPage();
-								flashArrow($prev);
-								break;
-							case 'up':
-							case 'left':
-								nextPage();
-								flashArrow($next);
-								break;
-						}
-					},
-	/*				hold:function(e, target) {
-						var x = e.clientX;
-						var y = e.clientY;
-						beginHighlight(book.renderer.render.window, book.renderer.render.document, x, y);*
-					},*/
-					threshold:75,
-					triggerOnTouchEnd:false, // 
-					maxTimeThreshold:1000,
-					longTapthreshold:1000,
-					excludedElements: $.fn.swipe.defaults.excludedElements + ', button, input, select, textarea, a[href]'
-				})				
+				setTimeout(function() { $iframe.swipe(swipe_options); }, 50);
 			});
 
 

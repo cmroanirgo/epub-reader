@@ -186,7 +186,7 @@ $cache_version = htmlspecialchars($_GET["cv"]);
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/hooks.min.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Reader -->
-        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.min.js?ver=<?php echo $cache_version; ?>"></script>
+        <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/reader.js?ver=<?php echo $cache_version; ?>"></script>
 
         <!-- Protection -->
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/protection.js?ver=<?php echo $cache_version; ?>"></script>
