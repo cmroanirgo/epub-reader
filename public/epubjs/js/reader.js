@@ -904,7 +904,6 @@ EPUBJS.reader.ReaderController = function(book) {
 	if ($.fn.swipe) { // jquery.touchswipe.min.js
 		console.log('swipe enabled')
 
-		var $prevFrame = null;
 		var swipe_options = {
 			swipe:function(e, direction) {
 				switch((direction+'').toLowerCase()) {
@@ -920,24 +919,17 @@ EPUBJS.reader.ReaderController = function(book) {
 						break;
 				}
 			},
-/*				hold:function(e, target) {
-				var x = e.clientX;
-				var y = e.clientY;
-				beginHighlight(book.renderer.render.window, book.renderer.render.document, x, y);*
-			},*/
 			threshold:60,
 			triggerOnTouchEnd:false, // 
 			maxTimeThreshold:1000,
 			longTapThreshold:1000,
-			excludedElements: $.fn.swipe.defaults.excludedElements + ',a[href]'
+			excludedElements:'a[href]'
 		};
 
 		book.renderer.registerHook("beforeChapterDisplay", function(callback, renderer){
 			//console.log('injecting swipe')
-			if ($prevFrame)
-				$prevFrame.disable(); // as soon as we get a newChapter started, stop allowing any updates from previousChapter
-			var $iframe = $(book.renderer.render.window);
-			setTimeout(function() { $iframe.swipe(swipe_options); $prevFrame=$iframe}, 50);
+			var $iframe = $(book.renderer.render.document);
+			setTimeout(function() { $iframe.swipe(swipe_options);}, 50);
 
 			if(callback) callback();        
 		});

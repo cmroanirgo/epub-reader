@@ -165,7 +165,7 @@ $cache_version = htmlspecialchars($_GET["cv"]);
 				$('#font-down').on('click', function(e) { return fontSizeHandler(e, -0.1); }).on('mousedown', fnNothing);
 				$('#font-reset').on('click', function(e) { redraw(1); return fnNothing(e); }).on('mousedown', fnNothing);
 				//$('#highlight').on('click', function(e) { return fnNothing(e); }).on('mousedown', fnNothing);
-				$(document).on('touchmove', function(e) { e.preventDefault(); }); // fix iOS 10+ page scrolling
+				$(document).on('touchmove', function(e) { if (e && isMobile && isAppleWebKit) e.preventDefault(); }); // fix iOS 10+ page scrolling
 
 			})
         </script>
@@ -178,6 +178,7 @@ $cache_version = htmlspecialchars($_GET["cv"]);
 
         <!-- Touch -->
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/jquery.touchswipe.min.js?ver=<?php echo $cache_version; ?>"></script>
+        <!--<script type="text/javascript" src="<?php echo $epubjs_url; ?>js/libs/swipe.js?ver=<?php echo $cache_version; ?>"></script>-->
 
         <!-- Render -->
         <script type="text/javascript" src="<?php echo $epubjs_url; ?>js/epub.min.js?ver=<?php echo $cache_version; ?>"></script>
