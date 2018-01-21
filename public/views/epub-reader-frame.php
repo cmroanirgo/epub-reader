@@ -6,8 +6,11 @@ header('X-Frame-Options: SAMEORIGIN');
 function getUrl() {
 	$url = '';
 
-	if (isset($_SERVER['HTTPS']) && filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN))
+	$is_ssl = false;
+	if (isset($_SERVER['HTTPS']) && filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN)) {
 	    $url .= 'https';
+	    $is_ssl = true;
+	}
 	else
 	    $url .= 'http';
 
@@ -21,7 +24,7 @@ function getUrl() {
 	    trigger_error ('Could not get URL from $_SERVER vars');
 
 
-	if ($_SERVER['SERVER_PORT'] != '80')
+	if (($_SERVER['SERVER_PORT'] != '80' && !$is_ssl) || ($_SERVER['SERVER_PORT'] != '443' && $is_ssl))
 	  $url .= ':'.$_SERVER["SERVER_PORT"];
 
 	if (isset($_SERVER['REQUEST_URI']))
